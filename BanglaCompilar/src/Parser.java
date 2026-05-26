@@ -12,6 +12,7 @@ public class Parser {
     // Keep old constructor for backward compatibility (grammar loader ignored now)
     public Parser(List<Token> tokens, GrammarLoader grammar) {
         this.tokens = tokens;
+        this.tokenizeGrammar(grammar); // No-op, grammar is hardcoded in parsing methods
     }
 
     public List<ASTNode> parse() {

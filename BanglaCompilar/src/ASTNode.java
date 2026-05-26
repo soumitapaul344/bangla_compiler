@@ -2,62 +2,136 @@ import java.util.List;
 
 public abstract class ASTNode {}
 
+// Number Node
 class NumberNode extends ASTNode {
-    int value;
-    NumberNode(int value) { this.value = value; }
-}
+    private int value;
 
-class StringNode extends ASTNode {
-    String value;
-    StringNode(String value) { this.value = value; }
-}
+    public NumberNode(int value) {
+        this.value = value;
+    }
 
-class VarNode extends ASTNode {
-    String name;
-    VarNode(String name) { this.name = name; }
-}
-
-class BinOpNode extends ASTNode {
-    ASTNode left;
-    String operator;
-    ASTNode right;
-    BinOpNode(ASTNode left, String operator, ASTNode right) {
-        this.left = left; this.operator = operator; this.right = right;
+    public int getValue() {
+        return value;
+        return null;
     }
 }
 
+// String Node
+class StringNode extends ASTNode {
+    private String value;
+
+    public StringNode(String value) {
+        this.value = value;
+    }
+
+    public String getValue() {
+        return value;
+    }
+}
+
+// Variable Node
+class VarNode extends ASTNode {
+    private String name;
+
+    public VarNode(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+}
+
+// Binary Operation Node
+class BinOpNode extends ASTNode {
+    private ASTNode left;
+    private String operator;
+    private ASTNode right;
+
+    public BinOpNode(ASTNode left, String operator, ASTNode right) {
+        this.left = left;
+        this.operator = operator;
+        this.right = right;
+    }
+
+    public ASTNode getLeft() {
+        return left;
+    }
+
+    public String getOperator() {
+        return operator;
+    }
+
+    public ASTNode getRight() {
+        return right;
+    }
+}
+
+// Assignment Node
 class AssignNode extends ASTNode {
-    String name;
-    ASTNode expr;
-    AssignNode(String name, ASTNode expr) { this.name = name; this.expr = expr; }
+    private String name;
+    private ASTNode expr;
+
+    public AssignNode(String name, ASTNode expr) {
+        this.name = name;
+        this.expr = expr;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ASTNode getExpr() {
+        return expr;
+    }
 }
 
+// Boolean Node
 class BooleanNode extends ASTNode {
-    boolean value;
-    BooleanNode(boolean value) { this.value = value; }
+    private boolean value;
+
+    public BooleanNode(boolean value) {
+        this.value = value;
+    }
+
+    public boolean getValue() {
+        return value;
+    }
 }
 
+// If Node
 class IfNode extends ASTNode {
-    ASTNode condition;
-    List<ASTNode> thenBody;
-    List<ASTNode> elseBody; // can be null if no else
-    IfNode(ASTNode condition, List<ASTNode> thenBody, List<ASTNode> elseBody) {
+    private ASTNode condition;
+    private List<ASTNode> thenBody;
+    private List<ASTNode> elseBody;
+
+    public IfNode(ASTNode condition, List<ASTNode> thenBody, List<ASTNode> elseBody) {
         this.condition = condition;
         this.thenBody = thenBody;
         this.elseBody = elseBody;
     }
 }
 
+// While Node
 class WhileNode extends ASTNode {
-    ASTNode condition;
-    List<ASTNode> body;
-    WhileNode(ASTNode condition, List<ASTNode> body) {
+    private ASTNode condition;
+    private List<ASTNode> body;
+
+    public WhileNode(ASTNode condition, List<ASTNode> body) {
         this.condition = condition;
         this.body = body;
     }
 }
 
+// Print Node
 class PrintNode extends ASTNode {
-    ASTNode expr;
-    PrintNode(ASTNode expr) { this.expr = expr; }
+    private ASTNode expr;
+
+    public PrintNode(ASTNode expr) {
+        this.expr = expr;
+    }
+
+    public ASTNode getExpr() {
+        return expr;
+    }
 }
